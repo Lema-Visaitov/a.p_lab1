@@ -1,28 +1,21 @@
-from enum import Enum
+from model.person import Person, Teacher, Student
 
 JSON_DB_PATH = '../db/json/db.json'
 XML_DB_PATH = '../db/xml/db.xml'
 
-class PersonEnum(Enum):
-    TEACHER = "Преподаватель"
-    STUDENT = "Студент"
+PERSON_MAP = {
+    "Преподаватель" : {
+        "Кафедра УИТС" : lambda first_name, last_name: Teacher(first_name, last_name, "Кафедра УИТС"),
+        "Кафедра ИТВС" : lambda first_name, last_name: Teacher(first_name, last_name, "Кафедра ИТВС")
+    },
+    "Студент" : {
+        "Прикладная информатика" : lambda first_name, last_name, group: Student(first_name, last_name, "Прикладная информатика", group),
+        "Программная инжерия" : lambda first_name, last_name, group: Student(first_name, last_name, "Программная инжерия", group),
+        "Информатика и вычислительная техника" : lambda first_name, last_name, group: Student(first_name, last_name, "Информатика и вычислительная техника", group)
+    }
+}
 
-    @staticmethod
-    def is_valid_type(value: str) -> bool:
-        return value in [person_type.value for person_type in PersonEnum]
-    
-class SpecialityEnum(Enum):
-    APPLIED_INFORMATICS = "Прикладная информатика"
-    SOFTWARE_ENGINEERING = "Программная инжерия"
-    CS_AND_CT = "Информатика и вычислительная техника"
-    
-    def is_valid_type(value: str) -> bool:
-        return value in [speciality_type.value for speciality_type in SpecialityEnum]
-    
-class DepartmentEnum(Enum):
-    UITS = "Кафедра УИТС"
-    IT_AND_CT = "Кафедра информационных технологий и вычислительных систем"
-
-    @staticmethod
-    def is_valid_type(value: str) -> bool:
-        return value in [department.value for department in DepartmentEnum]
+PERSON_FROM_DICT = {
+    "Преподаватель" : lambda teacher_data: Teacher.from_dict(teacher_data),
+    "Студент" : lambda student_data: Student.from_dict(student_data)
+}
