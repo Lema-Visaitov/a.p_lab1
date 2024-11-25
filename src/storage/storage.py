@@ -8,6 +8,19 @@ class Storage:
     def __init__(self, serializer: Serializer, file_path: str) -> None:
         self.__serializer: Serializer = serializer
         self.__db_path: str = file_path
+        self.__current_id: int = 0
+
+    @property
+    def current_id(self) -> int:
+        return self.__current_id
+    
+    def get_current_id(self) -> int:
+        return self.__current_id
+
+    def set_current_id(self) -> int:
+        id = self.__current_id
+        self.__current_id += 1
+        return id
 
     def save_to_file(self, data: dict) -> None:
         try:

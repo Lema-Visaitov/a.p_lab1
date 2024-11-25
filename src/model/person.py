@@ -2,7 +2,12 @@ class Person:
     def __init__(self, first_name: str, last_name: str):
         self.__first_name: str = first_name
         self.__last_name: str = last_name
+        self.__id = 0
 
+    @property
+    def id(self) -> int:
+        return self.__id
+    
     @property
     def first_name(self) -> str:
         return self.__first_name
@@ -12,6 +17,10 @@ class Person:
         return self.__last_name
     
     
+    @id.setter
+    def id(self, id: int) -> None:
+        self.__id = id
+
     @first_name.setter
     def name(self, first_name: str) -> None:
         self.__first_name = first_name
@@ -22,6 +31,7 @@ class Person:
 
     def __dict__(self) -> dict:
         return {
+            "id" : self.__id,
             "type": self.__class__.__name__,
             "first_name": self.__first_name,
             "last_name": self.__last_name
