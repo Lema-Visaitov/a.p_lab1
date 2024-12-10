@@ -1,0 +1,18 @@
+[
+    {
+        "id": 0,
+        "type": "Student",
+        "first_name": "wfwf",
+        "last_name": "fwef",
+        "specific": "прикладная информатика",
+        "group": "11"
+    },
+    {
+        "id": 1,
+        "type": "Student",
+        "first_name": "Fsfs",
+        "last_name": "sfsfs",
+        "specific": "прикладная информатика",
+        "group": "12"
+    }
+]
