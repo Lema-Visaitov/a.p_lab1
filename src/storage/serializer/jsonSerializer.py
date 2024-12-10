@@ -7,7 +7,7 @@ class JsonSerializer(Serializer):
         persons_data: dict = [person.__dict__() for person in persons]
         return json.dumps(persons_data, ensure_ascii=False, indent=4)
 
-    def from_format(self, file_data: dict) -> any:
+    def from_format(self, file_data: dict) -> list:
         persons_data = json.loads(file_data)    
         return persons_data
     
