@@ -2,7 +2,7 @@ class Person:
     def __init__(self, first_name: str, last_name: str):
         self.__first_name: str = first_name
         self.__last_name: str = last_name
-        self.__id = 0
+        self.__id: int = 0
 
     @property
     def id(self) -> int:
