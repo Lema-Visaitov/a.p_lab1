@@ -8,11 +8,6 @@ from services.personService import PersonService
 
 def main():
     try:
-        person: Person = Person.from_dict({
-            "id": 1,
-            "first_name": "asfsf",
-            "last_name": "daf"
-        })
         print("С каким форматом работать (1. json, 2. xml):")
         choice = input("Введите номер действия: ")
         if choice == "1":
